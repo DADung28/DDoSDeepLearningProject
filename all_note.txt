@@ -1,0 +1,79 @@
+#------Accuracy, Recall, Precision, F1------#
+Accuray = (TP+FN)(TP+TN+FP+FN) = Number of correct predictions / Total number of predictions
+Precision = (TP)/(TP+FP) 
+Recall = (TP)/(TP+FN)
+F1-score = 2 * (Precision * Recall) / (Precision + Recall)
+
+#-------Parameters-------#
+    epoch: 50
+    batch_size: 1000
+    lr: 0.01
+    scheduler: lr=lr*0.5 after 3 epoch
+
+#-------Datase Note------#
+    dataset_ddos: contain dataset with ddos flow only
+        CICIDS2017.csv
+        CICIDS2018.csv
+        CICIDS2019.csv
+    dataset_all_attack: contain the dataset with full attack type flow
+        CICIDS2017.csv
+        CICIDS2018.csv
+
+#-------Python File Note--------#
+    CustomFunction.py: Contain all function used by main program, add new function to this file (training and validation program)
+    model_define.py: Contain all Deep Learning Model used in main program, add new model here and go to main program to define new one
+    Auto_train.*: Automatic train program by passing parameters
+
+#-------saved_model folder-----#
+    Contain trained model based on it type(CICIDS2018) and ver (0,1,2)
+
+#-------Model List-------#
+ANN : input:77, Linear(1000,2000), relu, Linear(2000,4000), relu, Linear(4000,6000), relu, Linear(6000,8000), relu, Linear(8000,16000), relu, Linear(16000,5000), relu, Linear(5000,output)
+CNN : input:77, Linear: (3*40*40, Conv2d (3,40,(5,5),(1,1)), relu, MaxPool2d ((2,2)(2,2)), Conv2d(40,200,(5,5),(1,1)), relu, MaxPool2d ((2,2)(2,2)), Flatten, FC: Linear(9800,5000), relu, FC: Linear(5000, output))
+CNN2 : input:77, Linear: (3*100*100, Conv2d (3,40,(5,5),(1,1)), relu, MaxPool2d ((2,2)(2,2)), Conv2d(40,80,(5,5),(1,1)), relu, MaxPool2d ((2,2)(2,2)), Conv2d(80,200,(5,5),(1,1)), relu, MaxPool2d ((2,2)(2,2)), Flatten, FC: Linear(16200,5000), relu, FC: Linear(5000, output))
+
+#-------Making Dataset-------#
+    make_dataset.sh
+
+#-------Training---------#
+CICIDS2017:
+    Multi Classification ddos: python3 train.py --device 7 --dataset ./dataset_clean/CICIDS2017.csv --model ANN --ver 0 --epoch_start 0 --scheduler --lr 0.01 --bs 1000 --type CICIDS2017_anomaly  
+            (96% accuracy, 1 epoch: 460s) --> Relative good peformance but expensive computing cost
+    Binary Classification ddos: python3 train.py --device 6 --dataset ./dataset_ddos/CICIDS2017.csv --model CNN --ver 0 --epoch_start 0 --scheduler --lr 0.01 --bs 1000 --type CICIDS2017_anomaly
+            (97% accuracy, 1 epoch: 130s) --> Good peformance and good computing cost
+                                python3 train.py --device 7 --dataset ./dataset_ddos/CICIDS2017.csv --model CNN2 --ver 0 --epoch_start 0 --scheduler --lr 0.01 --bs 1000 --type CICIDS2017_anomaly
+            (97% accuracy, 1 epoch: 470s) --> Good peformance but expensive computing cost
+            
+CICIDS2018:
+   Multi Classification All: python3 train.py --device 0 --dataset ./dataset_all_attack/CICIDS2018.csv --model CNN --ver 0 --epoch_start 0 --scheduler --lr 0.01 --bs 1000 --type CICIDS2018_all 
+            (96% accuracy, 1 epoch: 1330s) --> Good peformance and good computing cost but not enough (>99)
+   Multi Classification ddos: python3 train.py --device 2 --dataset ./dataset_ddos/CICIDS2018.csv --model CNN --ver 0 --epoch_start 0 --scheduler --lr 0.01 --bs 1000 --type CICIDS2018_ddos 
+            (99.5% accuracy, 1 epoch: 1035s) --> Good peformance and good computing cost
+   Binary Classification ddos: python3 train.py --device 4 --dataset ./dataset_ddos/CICIDS2018.csv --model CNN --ver 0 --epoch_start 0 --scheduler --lr 0.01 --bs 1000 --type CICIDS2018_anomaly 
+            (99.86% accuracy, 1 epoch: 1330s) --> Good peformance and good computing cost but not enough (>99)
+CICIDS2019:
+    Binary Classificarion: python3 train.py --device 3 --dataset ./dataset_ddos/CICIDS2019.csv --model CNN --ver 0 --epoch_start 0 --scheduler --lr 0.01 --bs 1000 --type CICIDS2019_anomaly
+            (99.99% accuracy, 1 epoch: 1240s) --> Good peformance and good computing cost but not enough (>99)
+    MultiClass Classificarion: python3 train.py --device 5 --dataset ./dataset_ddos/CICIDS2019.csv --model CNN --ver 0 --epoch_start 0 --scheduler --lr 0.01 --bs 1000 --type CICS2019
+Combinated:
+    Binary Classificarion: python3 train_combinated.py --device 3 --model CNN --ver 0 --epoch_start 0 --scheduler --lr 0.01 --bs 1000 --type combinated
+            (99.99% accuracy, 1 epoch: 1240s) --> Good peformance and good computing cost but not enough (>99)  
+
+#--------_Validation----------#
+    # Trained 2017
+    python3 validation.py --device 0 --epoch 50 --dataset ./dataset_ddos/CICIDS2017.csv --model CNN --ver 0 --trained_type CICIDS2017_anomaly --test_type CICIDS2017_anomaly
+    python3 validation.py --device 0 --epoch 50 --dataset ./dataset_ddos/CICIDS2018.csv --model CNN --ver 0 --trained_type CICIDS2017_anomaly --test_type CICIDS2018_anomaly
+    python3 validation.py --device 0 --epoch 50 --dataset ./dataset_ddos/CICIDS2019.csv --model CNN --ver 0 --trained_type CICIDS2017_anomaly --test_type CICIDS2019_anomaly
+    # Trained 2018
+    python3 validation.py --device 0 --epoch 50 --dataset ./dataset_ddos/CICIDS2018.csv --model CNN --ver 0 --trained_type CICIDS2018_anomaly --test_type CICIDS2018_anomaly
+    python3 validation.py --device 0 --epoch 50 --dataset ./dataset_ddos/CICIDS2017.csv --model CNN --ver 0 --trained_type CICIDS2018_anomaly --test_type CICIDS2017_anomaly
+    python3 validation.py --device 0 --epoch 50 --dataset ./dataset_ddos/CICIDS2019.csv --model CNN --ver 0 --trained_type CICIDS2018_anomaly --test_type CICIDS2019_anomaly
+    # Trained 2019
+    python3 validation.py --device 0 --epoch 25 --dataset ./dataset_ddos/CICIDS2019.csv --model CNN --ver 0 --trained_type CICIDS2019_anomaly --test_type CICIDS2019_anomaly
+    python3 validation.py --device 0 --epoch 25 --dataset ./dataset_ddos/CICIDS2017.csv --model CNN --ver 0 --trained_type CICIDS2019_anomaly --test_type CICIDS2017_anomaly
+    python3 validation.py --device 0 --epoch 25 --dataset ./dataset_ddos/CICIDS2018.csv --model CNN --ver 0 --trained_type CICIDS2019_anomaly --test_type CICIDS2018_anomaly
+    # Trained Combinated dataset
+    python3 validation.py --device 0 --epoch 1 --dataset ./dataset_ddos/CICIDS2019.csv --model CNN --ver 0 --trained_type combinated --test_type CICIDS2019_anomaly
+    python3 validation.py --device 0 --epoch 1 --dataset ./dataset_ddos/CICIDS2017.csv --model CNN --ver 0 --trained_type combinated --test_type CICIDS2017_anomaly
+    python3 validation.py --device 0 --epoch 1 --dataset ./dataset_ddos/CICIDS2018.csv --model CNN --ver 0 --trained_type combinated --test_type CICIDS2018_anomaly
+    python3 validation_combinated.py --device 0 --epoch 1  --model CNN --ver 0 --trained_type combinated --test_type CICIDS2018_anomaly

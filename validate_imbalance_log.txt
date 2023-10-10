@@ -1,0 +1,446 @@
+-------------PARAMETERS-------------
+Current work path: /home/jun/DDoSDeepLearningProject
+Dataset PATH: ./dataset_ddos/CICIDS2017.csv
+Dataset type: CICIDS2017_anomaly
+Training on GPU: 0
+Batch size: 1000
+Trained model PATH: /home/jun/DDoSDeepLearningProject/trained_model/CICIDS2017_anomaly/CNN_0/50epoch.pth
+-------------ANALYZE DATASET-------------
+Loading dataset, please wait .....
+DONE!
+-------------------------
+Start fixing columns name
+DONE!
+-------------------------
+Start dropping NaN and Infinity contained row
+DONE!
+-------------------------
+Start encoding flow labels to number
+DONE!
+-------------------------
+Dropping ('Unnamed: 0', 'Flow ID','Source IP', 'Source Port', 'Destination IP', 'Destination Port', 'Timestamp', 'SimillarHTTP')
+No columns to drop
+DONE!
+-------------------------
+Change data into numpy
+DONE!
+-------------------------
+Split numpy data to data and label
+(2483006, 78)
+77
+DONE!
+-------------------------
+Normalizing data into range [0,1] for training
+DONE!
+-------------------------
+Split train, validate and test dataset: 90:5:5
+DONE!
+Train shape: (1986404, 77), Validate shape: (248301, 77), Test shape: (248301, 77)
+-------------------------
+Analyze data took: 14.96s
+-------------TRAINING-------------
+torch.Size([1000, 77]) torch.Size([1000])
+torch.float32
+CNN(
+  (linear1): Linear(in_features=77, out_features=4800, bias=True)
+  (conv1): Conv2d(3, 40, kernel_size=(5, 5), stride=(1, 1))
+  (relu1): ReLU()
+  (maxpool1): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(40, 200, kernel_size=(5, 5), stride=(1, 1))
+  (relu2): ReLU()
+  (maxpool2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (fc1): Linear(in_features=9800, out_features=5000, bias=True)
+  (relu3): ReLU()
+  (fc2): Linear(in_features=5000, out_features=2, bias=True)
+)
+Test average accuracy: 96.13%, Test average loss: 0.067
+Confusion matrix:
+ [[209298   1119]
+ [  7810  30074]]
+Benign : DDoS = 210417 : 37884 = 84.74 : 15.26
+Total accuracy: 96.40%
+Precision: {0: 0.964, 1: 0.964}
+Recall: {0: 0.995, 1: 0.794}
+f1_score: {0: 0.979, 1: 0.871}
+-------------PARAMETERS-------------
+Current work path: /home/jun/DDoSDeepLearningProject
+Dataset PATH: ./dataset_ddos/CICIDS2018.csv
+Dataset type: CICIDS2018_anomaly
+Training on GPU: 0
+Batch size: 1000
+Trained model PATH: /home/jun/DDoSDeepLearningProject/trained_model/CICIDS2017_anomaly/CNN_0/50epoch.pth
+-------------ANALYZE DATASET-------------
+Loading dataset, please wait .....
+DONE!
+-------------------------
+Start fixing columns name
+DONE!
+-------------------------
+Start dropping NaN and Infinity contained row
+DONE!
+-------------------------
+Start encoding flow labels to number
+DONE!
+-------------------------
+Dropping ('Unnamed: 0', 'Flow ID','Source IP', 'Source Port', 'Destination IP', 'Destination Port', 'Timestamp', 'SimillarHTTP')
+No columns to drop
+DONE!
+-------------------------
+Change data into numpy
+DONE!
+-------------------------
+Split numpy data to data and label
+(15308482, 78)
+77
+DONE!
+-------------------------
+Normalizing data into range [0,1] for training
+DONE!
+-------------------------
+Split train, validate and test dataset: 90:5:5
+DONE!
+Train shape: (12246785, 77), Validate shape: (1530848, 77), Test shape: (1530849, 77)
+-------------------------
+Analyze data took: 91.42s
+-------------TRAINING-------------
+torch.Size([1000, 77]) torch.Size([1000])
+torch.float32
+CNN(
+  (linear1): Linear(in_features=77, out_features=4800, bias=True)
+  (conv1): Conv2d(3, 40, kernel_size=(5, 5), stride=(1, 1))
+  (relu1): ReLU()
+  (maxpool1): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(40, 200, kernel_size=(5, 5), stride=(1, 1))
+  (relu2): ReLU()
+  (maxpool2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (fc1): Linear(in_features=9800, out_features=5000, bias=True)
+  (relu3): ReLU()
+  (fc2): Linear(in_features=5000, out_features=2, bias=True)
+)
+Test average accuracy: 49.05%, Test average loss: 1.382
+Confusion matrix:
+ [[629283 710366]
+ [ 69603 121597]]
+Benign : DDoS = 1339649 : 191200 = 87.51 : 12.49
+Total accuracy: 49.05%
+Precision: {0: 0.9, 1: 0.146}
+Recall: {0: 0.47, 1: 0.636}
+f1_score: {0: 0.617, 1: 0.238}
+-------------PARAMETERS-------------
+Current work path: /home/jun/DDoSDeepLearningProject
+Dataset PATH: ./dataset_ddos/CICIDS2019.csv
+Dataset type: CICIDS2019_anomaly
+Training on GPU: 0
+Batch size: 1000
+Trained model PATH: /home/jun/DDoSDeepLearningProject/trained_model/CICIDS2017_anomaly/CNN_0/50epoch.pth
+-------------ANALYZE DATASET-------------
+Loading dataset, please wait .....
+DONE!
+-------------------------
+Start fixing columns name
+DONE!
+-------------------------
+Start dropping NaN and Infinity contained row
+DONE!
+-------------------------
+Start encoding flow labels to number
+DONE!
+-------------------------
+Dropping ('Unnamed: 0', 'Flow ID','Source IP', 'Source Port', 'Destination IP', 'Destination Port', 'Timestamp', 'SimillarHTTP')
+No columns to drop
+DONE!
+-------------------------
+Change data into numpy
+DONE!
+-------------------------
+Split numpy data to data and label
+(48699876, 78)
+77
+DONE!
+-------------------------
+Normalizing data into range [0,1] for training
+DONE!
+-------------------------
+Split train, validate and test dataset: 90:5:5
+DONE!
+Train shape: (38959900, 77), Validate shape: (4869988, 77), Test shape: (4869988, 77)
+-------------------------
+Analyze data took: 388.70s
+-------------TRAINING-------------
+torch.Size([1000, 77]) torch.Size([1000])
+torch.float32
+CNN(
+  (linear1): Linear(in_features=77, out_features=4800, bias=True)
+  (conv1): Conv2d(3, 40, kernel_size=(5, 5), stride=(1, 1))
+  (relu1): ReLU()
+  (maxpool1): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(40, 200, kernel_size=(5, 5), stride=(1, 1))
+  (relu2): ReLU()
+  (maxpool2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (fc1): Linear(in_features=9800, out_features=5000, bias=True)
+  (relu3): ReLU()
+  (fc2): Linear(in_features=5000, out_features=2, bias=True)
+)
+Test average accuracy: 0.24%, Test average loss: 33.129
+Confusion matrix:
+ [[   5667       4]
+ [4858193    6124]]
+Benign : DDoS = 5671 : 4864317 = 0.12 : 99.88
+Total accuracy: 0.24%
+Precision: {0: 0.001, 1: 0.999}
+Recall: {0: 0.999, 1: 0.001}
+f1_score: {0: 0.002, 1: 0.003}
+-------------PARAMETERS-------------
+Current work path: /home/jun/DDoSDeepLearningProject
+Dataset PATH: ./dataset_ddos/CICIDS2018.csv
+Dataset type: CICIDS2018_anomaly
+Training on GPU: 0
+Batch size: 1000
+Trained model PATH: /home/jun/DDoSDeepLearningProject/trained_model/CICIDS2018_anomaly/CNN_0/50epoch.pth
+-------------ANALYZE DATASET-------------
+Loading dataset, please wait .....
+DONE!
+-------------------------
+Start fixing columns name
+DONE!
+-------------------------
+Start dropping NaN and Infinity contained row
+DONE!
+-------------------------
+Start encoding flow labels to number
+DONE!
+-------------------------
+Dropping ('Unnamed: 0', 'Flow ID','Source IP', 'Source Port', 'Destination IP', 'Destination Port', 'Timestamp', 'SimillarHTTP')
+No columns to drop
+DONE!
+-------------------------
+Change data into numpy
+DONE!
+-------------------------
+Split numpy data to data and label
+(15308482, 78)
+77
+DONE!
+-------------------------
+Normalizing data into range [0,1] for training
+DONE!
+-------------------------
+Split train, validate and test dataset: 90:5:5
+DONE!
+Train shape: (12246785, 77), Validate shape: (1530848, 77), Test shape: (1530849, 77)
+-------------------------
+Analyze data took: 92.42s
+-------------TRAINING-------------
+torch.Size([1000, 77]) torch.Size([1000])
+torch.float32
+CNN(
+  (linear1): Linear(in_features=77, out_features=4800, bias=True)
+  (conv1): Conv2d(3, 40, kernel_size=(5, 5), stride=(1, 1))
+  (relu1): ReLU()
+  (maxpool1): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(40, 200, kernel_size=(5, 5), stride=(1, 1))
+  (relu2): ReLU()
+  (maxpool2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (fc1): Linear(in_features=9800, out_features=5000, bias=True)
+  (relu3): ReLU()
+  (fc2): Linear(in_features=5000, out_features=2, bias=True)
+)
+Test average accuracy: 87.50%, Test average loss: 11.467
+Confusion matrix:
+ [[1339649       0]
+ [ 191200       0]]
+Benign : DDoS = 1339649 : 191200 = 87.51 : 12.49
+Total accuracy: 87.51%
+Precision: {0: 0.875, 1: nan}
+Recall: {0: 1.0, 1: 0.0}
+f1_score: {0: 0.933, 1: nan}
+-------------PARAMETERS-------------
+Current work path: /home/jun/DDoSDeepLearningProject
+Dataset PATH: ./dataset_ddos/CICIDS2017.csv
+Dataset type: CICIDS2017_anomaly
+Training on GPU: 0
+Batch size: 1000
+Trained model PATH: /home/jun/DDoSDeepLearningProject/trained_model/CICIDS2018_anomaly/CNN_0/50epoch.pth
+-------------ANALYZE DATASET-------------
+Loading dataset, please wait .....
+DONE!
+-------------------------
+Start fixing columns name
+DONE!
+-------------------------
+Start dropping NaN and Infinity contained row
+DONE!
+-------------------------
+Start encoding flow labels to number
+DONE!
+-------------------------
+Dropping ('Unnamed: 0', 'Flow ID','Source IP', 'Source Port', 'Destination IP', 'Destination Port', 'Timestamp', 'SimillarHTTP')
+No columns to drop
+DONE!
+-------------------------
+Change data into numpy
+DONE!
+-------------------------
+Split numpy data to data and label
+(2483006, 78)
+77
+DONE!
+-------------------------
+Normalizing data into range [0,1] for training
+DONE!
+-------------------------
+Split train, validate and test dataset: 90:5:5
+DONE!
+Train shape: (1986404, 77), Validate shape: (248301, 77), Test shape: (248301, 77)
+-------------------------
+Analyze data took: 15.04s
+-------------TRAINING-------------
+torch.Size([1000, 77]) torch.Size([1000])
+torch.float32
+CNN(
+  (linear1): Linear(in_features=77, out_features=4800, bias=True)
+  (conv1): Conv2d(3, 40, kernel_size=(5, 5), stride=(1, 1))
+  (relu1): ReLU()
+  (maxpool1): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(40, 200, kernel_size=(5, 5), stride=(1, 1))
+  (relu2): ReLU()
+  (maxpool2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (fc1): Linear(in_features=9800, out_features=5000, bias=True)
+  (relu3): ReLU()
+  (fc2): Linear(in_features=5000, out_features=2, bias=True)
+)
+Test average accuracy: 66.26%, Test average loss: 2.197
+Confusion matrix:
+ [[149159  61258]
+ [ 22045  15839]]
+Benign : DDoS = 210417 : 37884 = 84.74 : 15.26
+Total accuracy: 66.45%
+Precision: {0: 0.871, 1: 0.205}
+Recall: {0: 0.709, 1: 0.418}
+f1_score: {0: 0.782, 1: 0.276}
+-------------PARAMETERS-------------
+Current work path: /home/jun/DDoSDeepLearningProject
+Dataset PATH: ./dataset_ddos/CICIDS2019.csv
+Dataset type: CICIDS2019_anomaly
+Training on GPU: 0
+Batch size: 1000
+Trained model PATH: /home/jun/DDoSDeepLearningProject/trained_model/CICIDS2018_anomaly/CNN_0/50epoch.pth
+-------------ANALYZE DATASET-------------
+Loading dataset, please wait .....
+DONE!
+-------------------------
+Start fixing columns name
+DONE!
+-------------------------
+Start dropping NaN and Infinity contained row
+DONE!
+-------------------------
+Start encoding flow labels to number
+DONE!
+-------------------------
+Dropping ('Unnamed: 0', 'Flow ID','Source IP', 'Source Port', 'Destination IP', 'Destination Port', 'Timestamp', 'SimillarHTTP')
+No columns to drop
+DONE!
+-------------------------
+Change data into numpy
+DONE!
+-------------------------
+Split numpy data to data and label
+(48699876, 78)
+77
+DONE!
+-------------------------
+Normalizing data into range [0,1] for training
+DONE!
+-------------------------
+Split train, validate and test dataset: 90:5:5
+DONE!
+Train shape: (38959900, 77), Validate shape: (4869988, 77), Test shape: (4869988, 77)
+-------------------------
+Analyze data took: 353.01s
+-------------TRAINING-------------
+torch.Size([1000, 77]) torch.Size([1000])
+torch.float32
+CNN(
+  (linear1): Linear(in_features=77, out_features=4800, bias=True)
+  (conv1): Conv2d(3, 40, kernel_size=(5, 5), stride=(1, 1))
+  (relu1): ReLU()
+  (maxpool1): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(40, 200, kernel_size=(5, 5), stride=(1, 1))
+  (relu2): ReLU()
+  (maxpool2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (fc1): Linear(in_features=9800, out_features=5000, bias=True)
+  (relu3): ReLU()
+  (fc2): Linear(in_features=5000, out_features=2, bias=True)
+)
+Test average accuracy: 1.23%, Test average loss: 49.857
+Confusion matrix:
+ [[   1937    3734]
+ [4806500   57817]]
+Benign : DDoS = 5671 : 4864317 = 0.12 : 99.88
+Total accuracy: 1.23%
+Precision: {0: 0.0, 1: 0.939}
+Recall: {0: 0.342, 1: 0.012}
+f1_score: {0: 0.001, 1: 0.023}
+-------------PARAMETERS-------------
+Current work path: /home/jun/DDoSDeepLearningProject
+Dataset PATH: ./dataset_ddos/CICIDS2019.csv
+Dataset type: CICIDS2019_anomaly
+Training on GPU: 0
+Batch size: 1000
+Trained model PATH: /home/jun/DDoSDeepLearningProject/trained_model/CICIDS2019_anomaly/CNN_0/25epoch.pth
+-------------ANALYZE DATASET-------------
+Loading dataset, please wait .....
+DONE!
+-------------------------
+Start fixing columns name
+DONE!
+-------------------------
+Start dropping NaN and Infinity contained row
+DONE!
+-------------------------
+Start encoding flow labels to number
+DONE!
+-------------------------
+Dropping ('Unnamed: 0', 'Flow ID','Source IP', 'Source Port', 'Destination IP', 'Destination Port', 'Timestamp', 'SimillarHTTP')
+No columns to drop
+DONE!
+-------------------------
+Change data into numpy
+DONE!
+-------------------------
+Split numpy data to data and label
+(48699876, 78)
+77
+DONE!
+-------------------------
+Normalizing data into range [0,1] for training
+DONE!
+-------------------------
+Split train, validate and test dataset: 90:5:5
+DONE!
+Train shape: (38959900, 77), Validate shape: (4869988, 77), Test shape: (4869988, 77)
+-------------------------
+Analyze data took: 373.01s
+-------------TRAINING-------------
+torch.Size([1000, 77]) torch.Size([1000])
+torch.float32
+CNN(
+  (linear1): Linear(in_features=77, out_features=4800, bias=True)
+  (conv1): Conv2d(3, 40, kernel_size=(5, 5), stride=(1, 1))
+  (relu1): ReLU()
+  (maxpool1): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(40, 200, kernel_size=(5, 5), stride=(1, 1))
+  (relu2): ReLU()
+  (maxpool2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (fc1): Linear(in_features=9800, out_features=5000, bias=True)
+  (relu3): ReLU()
+  (fc2): Linear(in_features=5000, out_features=2, bias=True)
+)

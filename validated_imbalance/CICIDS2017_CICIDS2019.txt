@@ -1,0 +1,9 @@
+Test average accuracy: 0.24%, Test average loss: 33.129
+Confusion matrix:
+ [[   5667       4]
+ [4858193    6124]]
+Benign : DDoS = 5671 : 4864317 = 0.12 : 99.88
+Total accuracy: 0.24%
+Precision: {0: 0.001, 1: 0.999}
+Recall: {0: 0.999, 1: 0.001}
+f1_score: {0: 0.002, 1: 0.003}
